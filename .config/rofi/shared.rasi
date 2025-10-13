@@ -1,0 +1,345 @@
+// ─────────────────────────────────────────────────────────────────
+//
+//  ███████╗██╗  ██╗ █████╗ ██████╗ ███████╗██████╗ 
+//  ██╔════╝██║  ██║██╔══██╗██╔══██╗██╔════╝██╔══██╗
+//  ███████╗███████║███████║██████╔╝█████╗  ██║  ██║
+//  ╚════██║██╔══██║██╔══██║██╔══██╗██╔══╝  ██║  ██║
+//  ███████║██║  ██║██║  ██║██║  ██║███████╗██████╔╝
+//  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝ 
+//
+// ─────────────────────────────────────────────────────────────────
+//
+// Config author : Wakana Shimamura
+// Configs repo  : https://github.com/wakanashimamura/bspwm_dotfiles
+// File          : shared.rasi
+// Compatible    : rofi 2.0.0
+// Description   : Primary theme configuration for rofi
+//
+// ─────────────────────────────────────────────────────────────────
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                                COLORS                                │
+// └──────────────────────────────────────────────────────────────────────┘
+
+* {
+	font:  "JetBrainsMono Nerd Font 17";
+  
+  border-color:                #7287fd;
+  alternate-border-color:      @foreground-color;
+  background-color:            #1e1e2e;
+  alternate-background:        #45475a;
+  foreground-color:            #b6bed9;
+
+  placeholder-color:           #585b70;
+  handle-color:                #89b4fa;
+
+  normal-background:           @background-color;
+  normal-foreground:           @foreground-color;
+  urgent-background:           @background-color;
+  urgent-foreground:           #f38ba8;
+  active-background:           @background-color;
+  active-foreground:           #89dceb;
+
+  selected-normal-background:  @background-color;
+  selected-normal-foreground:  #7175f5;
+  selected-urgent-background:  @background-color;
+  selected-urgent-foreground:  @selected-normal-foreground;
+  selected-active-background:  @background-color;
+  selected-active-foreground:  @selected-normal-foreground;
+    
+  alternate-normal-background: @background-color;
+  alternate-normal-foreground: @normal-foreground;
+  alternate-urgent-background: @background-color;
+  alternate-urgent-foreground: @urgent-foreground;
+  alternate-active-background: @background-color;
+  alternate-active-foreground: @active-foreground;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                                WINDOW                                │
+// └──────────────────────────────────────────────────────────────────────┘
+
+window {
+  transparency:     "real";
+  location:         center;
+  anchor:           center;
+  fullscreen:       false;
+  width:            850px;
+  height:           550px; 
+  x-offset:         0px;
+  y-offset:         0px;
+
+  enabled:          true;
+  margin:           0px;
+  padding:          0px;
+  border:           2px;
+  border-radius:    10px;
+  border-color:     @border-color;
+  background-color: @background-color;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                               MAINBOX                                │
+// └──────────────────────────────────────────────────────────────────────┘
+
+mainbox {
+  enabled:          true;
+  spacing:          0px;
+  margin:           0px;
+  padding:          0px;
+  border:           0px;
+  border-radius:    0px;
+  border-color:     @border-color;
+  background-color: @background-color;
+  children:         [ inputbar, message, listview, mode-switcher ];
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                               INPUTBAR                               │
+// └──────────────────────────────────────────────────────────────────────┘
+
+inputbar {
+  enabled:          true;
+  spacing:          10px;
+  margin:           0px;
+  padding:          15px 20px 15px 20px;
+  border:           0px 0px 1px 0px;
+  border-radius:    0px;
+  border-color:     @alternate-border-color;
+  background-color: @background-color;
+  text-color:       @foreground-color;
+  children:         [ prompt, textbox-prompt-colon, entry ];
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                                PROMPT                                │
+// └──────────────────────────────────────────────────────────────────────┘
+
+prompt {
+  enabled:          true;
+  margin:           0px;
+  padding:          0px;
+  border-radius:    0px;
+  background-color: inherit;
+  text-color:       inherit;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                         TEXTBOX PROMPT COLON                         │
+// └──────────────────────────────────────────────────────────────────────┘
+
+textbox-prompt-colon {
+  enabled:          true;
+  expand:           false;
+  str:              ":";
+  background-color: inherit;
+  text-color:       inherit;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                                 ENTRY                                │
+// └──────────────────────────────────────────────────────────────────────┘
+
+entry {
+  enabled:           true;
+  padding:           0px;
+  margin:            0px; 
+  background-color:  @background-color;
+  text-color:        @foreground-color;
+  cursor:            text;
+  placeholder:       "Search...";
+  placeholder-color: @placeholder-color;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                                MESSAGE                               │
+// └──────────────────────────────────────────────────────────────────────┘
+
+message {
+  enabled:          true;
+  margin:           0px;
+  padding:          0px;
+  border:           0px;
+  border-radius:    0px;
+  border-color:     @border-color;
+  background-color: @background-color;
+  text-color:       @foreground-color;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                                TEXTBOX                               │
+// └──────────────────────────────────────────────────────────────────────┘
+
+textbox {
+  padding:           20px 20px;
+  border:            0px 0px 1px 0px;
+  border-radius:     0px;
+  border-color:      @alternate-border-color;
+  background-color:  @background-color;
+  text-color:        @foreground-color;
+  vertical-align:    0.5;
+  horizontal-align:  0.0;
+  highlight:         none;
+  placeholder-color: @foreground-color;
+  blink:             true;
+  markup:            true;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                             ERROR MESSAGE                            │
+// └──────────────────────────────────────────────────────────────────────┘
+
+error-message {
+  padding:          10px;
+  border:           0px;
+  border-radius:    0px;
+  border-color:     @border-color;
+  background-color: @background-color;
+  text-color:       @foreground-color;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                               LISTVIEW                               │
+// └──────────────────────────────────────────────────────────────────────┘
+
+listview {
+  enabled:          true;
+  columns:          1;
+  lines:            10;
+  cycle:            true;
+  dynamic:          true;
+  scrollbar:        true;
+  layout:           vertical;
+  reverse:          false;
+  fixed-height:     true;
+  fixed-columns:    true;
+  
+  spacing:          10px;
+  margin:           0px 20px 0px 0px;
+  padding:          25px 0px 25px 25px;
+  border:           0px;
+  border-radius:    0px;
+  border-color:     @border-color;
+  background-color: @background-color;
+  text-color:       @foreground-color;
+  cursor:           "default";
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                              SCROLLBAR                               │
+// └──────────────────────────────────────────────────────────────────────┘
+
+scrollbar {
+  handle-width:     8px ;
+  handle-color:     @handle-color;
+  border-radius:    10px;
+  background-color: @alternate-background;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                               ELEMENTS                               │
+// └──────────────────────────────────────────────────────────────────────┘
+
+element {
+  enabled:          true;
+  spacing:          0px;
+  margin:           0px;
+  padding:          0px 0px;
+  border:           0px solid;
+  border-radius:    0px;
+  border-color:     @border-color;
+  background-color: @background-color;
+  text-color:       @foreground-color;
+  cursor:           pointer;
+  children:         [ element-icon, element-text ];
+}
+
+element-icon {
+  background-color: inherit;
+  text-color:       inherit;
+  size:             24px;
+  cursor:           inherit;
+}
+
+element-text {
+  background-color: inherit;
+  text-color:       inherit;
+  highlight:        inherit;
+  cursor:           inherit;
+  vertical-align:   0.5;
+  horizontal-align: 0.0;
+}
+
+element normal.normal {
+  background-color: @normal-background;
+  text-color:       @normal-foreground;
+}
+element normal.urgent {
+  background-color: @urgent-background;
+  text-color:       @urgent-foreground;
+}
+element normal.active {
+  background-color: @active-background;
+  text-color:       @active-foreground;
+}
+
+element selected.normal {
+  background-color: @selected-normal-background;
+  text-color:       @selected-normal-foreground;
+}
+element selected.urgent {
+  background-color: @selected-urgent-background;
+  text-color:       @selected-urgent-foreground;
+}
+element selected.active {
+  background-color: @selected-active-background;
+  text-color:       @selected-active-foreground;
+}
+
+element alternate.normal {
+  background-color: @alternate-normal-background;
+  text-color:       @alternate-normal-foreground;
+}
+element alternate.urgent {
+  background-color: @alternate-urgent-background;
+  text-color:       @alternate-urgent-foreground;
+}
+element alternate.active {
+  background-color: @alternate-active-background;
+  text-color:       @alternate-active-foreground;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                             MODE SWITCHER                            │
+// └──────────────────────────────────────────────────────────────────────┘
+
+mode-switcher{
+  enabled:          true;
+  spacing:          0px;
+  margin:           0px;
+  padding:          15px 20px 15px 20px;
+  border:           1px 0px 0px 0px;
+  border-radius:    0px;
+  border-color:     @alternate-border-color;
+  background-color: @background-color;
+  text-color:       @foreground-color;
+}
+
+// ┌──────────────────────────────────────────────────────────────────────┐
+// │                                BUTTON                                │
+// └──────────────────────────────────────────────────────────────────────┘
+
+button {
+  padding:          10px;
+  border:           0px;
+  border-radius:    0px;
+  border-color:     @border-color;
+  background-color: @background-color;
+  text-color:       inherit;
+  cursor:           pointer;
+}
+
+button selected {
+  background-color: @selected-normal-background;
+  text-color:       @selected-normal-foreground;
+}
