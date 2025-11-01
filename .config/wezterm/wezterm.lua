@@ -89,45 +89,46 @@ config.colors = {
 -- └──────────────────────────────────────────────────────────────────────┘
 
 config.disable_default_key_bindings = true
+config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1500 }
 config.keys = {
  
-  { key = 'W', mods = 'CTRL', action = wezterm.action.CloseCurrentTab { confirm = true }, },
-  { key = 'U', mods = 'CTRL', action = wezterm.action.SpawnTab 'DefaultDomain'            },
+  { key = 'w', mods = 'LEADER', action = wezterm.action.CloseCurrentTab { confirm = true }, },
+  { key = 'u', mods = 'LEADER', action = wezterm.action.SpawnTab 'DefaultDomain'            },
 
-  { key = 'a', mods = 'CTRL|ALT', action = wezterm.action.SplitHorizontal  { domain = 'CurrentPaneDomain' } },
-  { key = 's', mods = 'CTRL|ALT', action = wezterm.action.SplitVertical    { domain = 'CurrentPaneDomain' } },
-  { key = 'w', mods = 'CTRL|ALT', action = wezterm.action.CloseCurrentPane { confirm = true },              },
+  { key = 'a', mods = 'LEADER|CTRL', action = wezterm.action.SplitHorizontal  { domain = 'CurrentPaneDomain' } },
+  { key = 's', mods = 'LEADER|CTRL', action = wezterm.action.SplitVertical    { domain = 'CurrentPaneDomain' } },
+  { key = 'w', mods = 'LEADER|CTRL', action = wezterm.action.CloseCurrentPane { confirm = true },              },
   
-  { key = 'H', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection 'Left',  },
-  { key = 'L', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection 'Right', },
-  { key = 'K', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection 'Up',    },
-  { key = 'J', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection 'Down',  },
+  { key = 'h', mods = 'LEADER', action = wezterm.action.ActivatePaneDirection 'Left',  },
+  { key = 'l', mods = 'LEADER', action = wezterm.action.ActivatePaneDirection 'Right', },
+  { key = 'k', mods = 'LEADER', action = wezterm.action.ActivatePaneDirection 'Up',    },
+  { key = 'j', mods = 'LEADER', action = wezterm.action.ActivatePaneDirection 'Down',  },
 
   { key = 'LeftArrow',  mods = 'CTRL|SHIFT', action = wezterm.action.ActivatePaneDirection 'Left'  },
   { key = 'RightArrow', mods = 'CTRL|SHIFT', action = wezterm.action.ActivatePaneDirection 'Right' },
   { key = 'UpArrow',    mods = 'CTRL|SHIFT', action = wezterm.action.ActivatePaneDirection 'Up'    },
   { key = 'DownArrow',  mods = 'CTRL|SHIFT', action = wezterm.action.ActivatePaneDirection 'Down'  },
 
-  { key = 'h', mods = 'CTRL|ALT', action = wezterm.action.AdjustPaneSize { 'Left',  5 }, },
-  { key = 'j', mods = 'CTRL|ALT', action = wezterm.action.AdjustPaneSize { 'Down',  5 }, },
-  { key = 'k', mods = 'CTRL|ALT', action = wezterm.action.AdjustPaneSize { 'Up',    5 }, },
-  { key = 'l', mods = 'CTRL|ALT', action = wezterm.action.AdjustPaneSize { 'Right', 5 }, },
+  { key = 'h', mods = 'LEADER|CTRL', action = wezterm.action.AdjustPaneSize { 'Left',  5 }, },
+  { key = 'j', mods = 'LEADER|CTRL', action = wezterm.action.AdjustPaneSize { 'Down',  5 }, },
+  { key = 'k', mods = 'LEADER|CTRL', action = wezterm.action.AdjustPaneSize { 'Up',    5 }, },
+  { key = 'l', mods = 'LEADER|CTRL', action = wezterm.action.AdjustPaneSize { 'Right', 5 }, },
 
   { key = 'C', mods = 'CTRL', action = wezterm.action.CopyTo 'ClipboardAndPrimarySelection', },
   { key = 'V', mods = 'CTRL', action = wezterm.action.PasteFrom 'Clipboard'                  },
 
-  { key = '-', mods = 'CTRL', action = wezterm.action.DecreaseFontSize },
-  { key = '=', mods = 'CTRL', action = wezterm.action.IncreaseFontSize },
-  { key = '0', mods = 'CTRL', action = wezterm.action.ResetFontSize    },
+  { key = '-', mods = 'LEADER', action = wezterm.action.DecreaseFontSize },
+  { key = '=', mods = 'LEADER', action = wezterm.action.IncreaseFontSize },
+  { key = '0', mods = 'LEADER', action = wezterm.action.ResetFontSize    },
     
-  { key = '{', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
-  { key = '}', mods = 'CTRL|SHIFT', action = wezterm.action.ActivateTabRelative(1)  },
+  { key = '{', mods = 'LEADER', action = wezterm.action.ActivateTabRelative(-1) },
+  { key = '}', mods = 'LEADER', action = wezterm.action.ActivateTabRelative(1)  },
 
-  { key = 'k',   mods = 'CTRL', action = wezterm.action.ScrollByLine(-1) },
-  { key = 'j', mods = 'CTRL', action = wezterm.action.ScrollByLine(1)  },
+  { key = 'k', mods = 'LEADER|ALT', action = wezterm.action.ScrollByLine(-1) },
+  { key = 'j', mods = 'LEADER|ALT', action = wezterm.action.ScrollByLine(1)  },
 
-  { key = 'PageUp',   mods = 'CTRL|SHIFT', action = wezterm.action.ScrollByPage(-1) },
-  { key = 'PageDown', mods = 'CTRL|SHIFT', action = wezterm.action.ScrollByPage(1)  },
+  { key = 'PageUp',   mods = 'LEADER', action = wezterm.action.ScrollByPage(-1) },
+  { key = 'PageDown', mods = 'LEADER', action = wezterm.action.ScrollByPage(1)  },
 } 
 
 for i = 1, 9 do

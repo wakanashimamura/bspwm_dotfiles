@@ -55,7 +55,7 @@ For more details see:
 
 
 ```bash
-cryptsetup luksFormat parted /dev/nvme0n1p2
+cryptsetup luksFormat /dev/nvme0n1p2
 cryptsetup open /dev/nvme0n1p2 cryptlvm
 ```
 
@@ -83,7 +83,7 @@ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 ### Install essential packages
 
 ```bash
-pacstrap -K /mnt base linux linux-firmware base-devel lvm2 dhcpcd net-tools iproute2 iwd vim grub efibootmgr
+pacstrap -K /mnt base linux linux-firmware base-devel lvm2 dhcpcd net-tools iproute2 iwd nvim grub efibootmgr
 ```
 
 ### Configure the system
@@ -110,7 +110,7 @@ hwclock --systohc
 #### Localization
 
 ```bash
-vim/etc/locale.gen
+nvim/etc/locale.gen
 ```
 
 Uncomment your locale (e.g. en_US.UTF-8)
@@ -139,7 +139,7 @@ passwd username
 Grant sudo permissions
 
 ```bash
-sudo EDITOR=vim visudo
+sudo EDITOR=nvim visudo
 ```
 
 Uncomment the following line
@@ -158,7 +158,7 @@ systemctl enable iwd.service
 #### Edit mkinitcpio.conf
 
 ```bash
-vim /etc/mkinitcpio.conf
+nvim /etc/mkinitcpio.conf
 ```
 
 Find the line starting with HOOKS= and insert encrypt lvm2 after block, e.g.:
@@ -181,13 +181,13 @@ For more details see:
 
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-vim /etc/default/grub
+nvim /etc/default/grub
 ```
 
 Add the following line (replace with the actual UUID from blkid)
 
 ```bash
-GRUB_CMDLINE_LINUX="cryptdevice=<UUID_OF_nvme0n1p2>:cryptlvm root=/dev/archvg/root"
+GRUB_CMDLINE_LINUX="cryptdevice=UUID=<UUID_OF_nvme0n1p2>:cryptlvm root=/dev/archvg/root"
 ```
 
 Then generate the configuration
